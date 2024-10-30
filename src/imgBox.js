@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Zoom from "react-medium-image-zoom";
 import axios from "axios";
 
-const url = "http://localhost:3001";
+const url = "https://backend-u47s.onrender.com:10000";
 
 function ImgBox() {
   const [jsonData, setJsonData] = useState({ images: [] });
