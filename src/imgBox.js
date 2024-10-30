@@ -2,15 +2,15 @@ import React, { useState, useEffect } from "react";
 import Zoom from "react-medium-image-zoom";
 import axios from "axios";
 
+const url = "http://localhost:3001";
+
 function ImgBox() {
   const [jsonData, setJsonData] = useState({ images: [] });
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(
-          "http://react-mk-backend.azurewebsites.net/images"
-        );
+        const response = await axios.get(`${url}/images`);
         setJsonData(response.data);
       } catch (error) {
         console.error("Error fetching data:", error);
@@ -67,15 +67,11 @@ function ImgBox() {
           ratings.push(rating);
         }
       }
-      axios.patch(
-        "http://react-mk-backend.azurewebsites.net/ratings",
-        ratings,
-        {
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      );
+      axios.patch(`${url}/ratings?`, ratings, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
       alert("Ratings sent successfully");
     } catch (error) {
       console.error("Error sending data:", error);
