@@ -17,7 +17,7 @@ function ImgBox() {
       }
     };
     fetchData();
-  });
+  }, []);
 
   return (
     <div className="pageWrapper">
